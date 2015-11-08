@@ -1,6 +1,6 @@
 ## Tronado
 
-Nginx with tornado develop enviroment!
+Tornado develop enviroment!
 
 ### Build
 
