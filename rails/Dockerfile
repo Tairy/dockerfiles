@@ -1,31 +1,15 @@
-FROM ubuntu:latest
-MAINTAINER Tairy <tairyguo@gmail.com>
+FROM ruby:2.2.0
+RUN apt-get update -qq && apt-get install -y build-essential nodejs npm nodejs-legacy mysql-client vim
+RUN npm install -g phantomjs
 
-# Install Ruby and Rails dependencies
-RUN apt-get update && apt-get install -y \
-  ruby \
-  ruby-dev \
-  build-essential \   
-  libxml2-dev \       
-  libxslt1-dev \      
-  zlib1g-dev \        
-  libsqlite3-dev \
-  nodejs \
-  vim
+RUN mkdir /mall
 
-RUN gem sources --add https://ruby.taobao.org/ --remove https://rubygems.org/
-
-# Install Rails
-RUN gem install rails
-
-RUN bundle config mirror.https://rubygems.org https://ruby.taobao.org
-
-# Create a new Rails app under /src/SF_Hackathon
-RUN mkdir -p /src && cd /src && rails new hackathon
-WORKDIR /src/hackathon
+WORKDIR /tmp
+COPY Gemfile Gemfile
+COPY Gemfile.lock Gemfile.lock
 RUN bundle install
 
-# Default command is to run a rails server on port 3000
-CMD ["rails", "server", "--binding", "0.0.0.0", "--port", "3000"]
-# CMD ["/bin/bash"]
-EXPOSE 3000
+ADD . /mall
+WORKDIR /mall
+RUN RAILS_ENV=production bundle exec rake assets:precompile --trace
+CMD ["rails","server","-b","0.0.0.0"]

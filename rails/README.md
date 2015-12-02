@@ -22,3 +22,7 @@ docker run --name sf-hackathon -v `pwd`:/src/hackathon:rw -p 3000:3000 rails
 docker run -d --name sf-hackathon -i -t rails /bin/bash
 docker exec -t -i sf-hackathon /bin/bash
 ```
+
+### Reference
+
+[Rails on Docker](https://robots.thoughtbot.com/rails-on-docker)
