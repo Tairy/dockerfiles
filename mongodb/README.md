@@ -7,7 +7,7 @@ cd /Dockerfile/path
 docker build -t mongodb ./
 ```
 
-### Run
+### Usage
 
 ```
 cd /your/work/path/

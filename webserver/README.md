@@ -9,7 +9,7 @@ cd /Dockerfile/path
 docker build -t webserver ./
 ```
 
-### Run 
+### Usage 
 
 ```
 cd /your/work/path/

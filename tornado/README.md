@@ -9,7 +9,7 @@ cd /Dockerfile/path
 docker build -t tornado ./
 ```
 
-### Run
+### Usage
 
 first step
 ```

@@ -9,7 +9,7 @@ cd /your/dockerfile/path
 docker build -t rails ./
 ```
 
-### Run
+### Usage
 
 ```
 cd /your/work/path/
