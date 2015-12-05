@@ -19,10 +19,6 @@ docker run -d --name search1 -v `pwd`:/data:rw -p 9200:9200 -p 9300:9300 elastic
 ```
 cd /your/work/path/
 docker run -d --name search1 -v `pwd`:/data:rw -p 9200:9200 -p 9300:9300 -i -t elasticsearch /bin/bash
-```
-
-### Test
-
-```
+# or
 docker exec -t -i search1 /bin/bash
 ```
