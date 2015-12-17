@@ -33,6 +33,11 @@ RUN \
   rm -f $ES_PKG_NAME.tar.gz && \
   mv /$ES_PKG_NAME /elasticsearch
 
+# Install marvel
+# RUN /elasticsearch/bin/plugin install license
+# RUN /elasticsearch/bin/plugin install marvel-agent
+# RUN /elasticsearch/bin/plugin install elasticsearch/marvel/latest
+
 RUN chmod -R 777 /elasticsearch
 RUN useradd -ms /bin/bash elasticsearch
 RUN adduser elasticsearch sudo
@@ -55,3 +60,4 @@ CMD ["/elasticsearch/bin/elasticsearch", "--network.host", "_non_loopback_"]
 #   - 9300: transport
 EXPOSE 9200
 EXPOSE 9300
+EXPOSE 5601

@@ -13,5 +13,5 @@ docker build -t webserver ./
 
 ```
 cd /your/work/path/
-docker run -d --name sss -v `pwd`:/var/www:rw -p 4567:80 webserver
+docker run -d --name web1 -v `pwd`:/var/www:rw -p 4567:80 -p 8000:8000 webserver
 ```

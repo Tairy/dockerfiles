@@ -1,0 +1,29 @@
+FROM ubuntu:trusty
+MAINTAINER Joyqi <joyqi@segmentfault.com>
+
+ADD scripts/install-base.sh /root/install-base.sh
+ADD scripts/install-tunnel.sh /root/install-tunnel.sh
+ADD install-php.sh /root/install-php.sh
+RUN chmod +x /root/install-base.sh
+RUN chmod +x /root/install-php.sh
+RUN chmod +x /root/install-tunnel.sh
+RUN /bin/bash /root/install-base.sh
+RUN /bin/bash /root/install-tunnel.sh
+RUN export SF_DEV=yes && /bin/bash /root/install-php.sh
+RUN apt-get -y install nginx
+ADD config/php_site /etc/nginx/php_site
+ADD config/default_site /etc/nginx/sites-enabled/default
+ADD config/vpn.php /qtunnel/vpn.php
+
+# expose all port
+EXPOSE 80
+EXPOSE 3306
+EXPOSE 6379
+EXPOSE 8383
+EXPOSE 8384
+EXPOSE 11211
+EXPOSE 27017
+
+# run php
+CMD /php/bin/php /qtunnel/vpn.php /qtunnel/bin/qtunnel && /usr/bin/memcached -d -m 64 -p 11211 -u memcache -l 0.0.0.0 && /usr/bin/redis-server /etc/redis/redis.conf && /php/sbin/php-fpm && nginx -g "daemon off;"
+
