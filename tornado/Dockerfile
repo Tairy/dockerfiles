@@ -2,10 +2,17 @@ FROM ubuntu:latest
 MAINTAINER Tairy <tairyguo@gmail.com>
 
 RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
-    && apt-get update \
+    && apt-get update --fix-missing \
     && apt-get -y upgrade
 
 RUN apt-get install -y autoconf make wget vim build-essential git curl
+RUN apt-get install -y htop man software-properties-common unzip
+
+RUN apt-get -y install supervisor && \
+  mkdir -p /var/log/supervisor && \
+  mkdir -p /etc/supervisor/conf.d
+
+ADD supervisor.conf /etc/supervisor.conf
 
 RUN apt-get install -y python-pip
 RUN pip install --default-timeout 6000 tornado pymongo
@@ -21,5 +28,5 @@ WORKDIR /working
 
 EXPOSE 80
 
-ENTRYPOINT ["python", "main.py", "--port=8888", "--debug=True"]
-
+CMD ["supervisord", "-c", "/etc/supervisor.conf"]
+# ENTRYPOINT ["python", "main.py", "--port=8888", "--debug=True"]
