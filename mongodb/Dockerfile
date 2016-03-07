@@ -3,7 +3,7 @@ MAINTAINER Tairy <tairyguo@gmail.com>
 
 
 RUN sed -i 's/archive.ubuntu.com/mirrors.163.com/g' /etc/apt/sources.list \
-    && apt-get update \
+    && apt-get update --fix-missing \
     && apt-get -y upgrade
 
 # Install MongoDB.

@@ -1,0 +1,6 @@
+2016-03-04 09:48:58,730 CRIT Supervisor running as root (no user in config file)
+2016-03-04 09:48:58,732 INFO supervisord started with pid 1
+2016-03-04 09:52:45,046 CRIT reaped unknown pid 25)
+2016-03-04 09:53:51,595 WARN received SIGTERM indicating exit request
+2016-03-04 09:54:00,533 CRIT Supervisor running as root (no user in config file)
+2016-03-04 09:54:00,535 INFO supervisord started with pid 1
