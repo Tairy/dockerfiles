@@ -13,7 +13,7 @@ RUN sed -i 's/archive.ubuntu.com/mirrors.163.com/g' /etc/apt/sources.list \
     && rm -rf /var/lib/apt/lists/*
 
 ADD supervisor.conf /etc/supervisor.conf
-ADD haproxy.conf /etc/haproxy.conf
+ADD haproxy.cfg /etc/haproxy.cfg
 
 RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
