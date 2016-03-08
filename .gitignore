@@ -1,2 +1,2 @@
-haproxy/supervisord.log
-haproxy/supervisord.pid
+*.log
+*.pid
