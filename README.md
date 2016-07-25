@@ -8,3 +8,4 @@
 - haproxy: A Haproxy server.
 - mysql: Mysql server.
 - redis: Redis server.
+- mall: rails enviroment for [mall(private repo)](https://github.com/Tairy/Mall) app.
