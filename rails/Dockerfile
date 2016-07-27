@@ -46,5 +46,7 @@ RUN mkdir -p /working
 WORKDIR /working
 ONBUILD COPY Gemfile /working
 ONBUILD COPY Gemfile.lock /working
-ONBUILD RUN /root/.rbenv/shims/bundle install
+ONBUILD RUN /root/.rbenv/shims/bundle install --no-deployment
 ONBUILD COPY . /working
+
+RUN apt-get install -y vim inetutils-ping

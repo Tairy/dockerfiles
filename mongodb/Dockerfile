@@ -1,4 +1,4 @@
-FROM ubuntu:16.10
+FROM daocloud.io/library/ubuntu:precise-20160707
 MAINTAINER Tairy <tairyguo@gmail.com>
 
 
