@@ -2,7 +2,7 @@ FROM daocloud.io/library/ubuntu:precise-20160707
 MAINTAINER Tairy <tairyguo@gmail.com>
 
 
-# RUN sed -i 's/archive.ubuntu.com/mirrors.163.com/g' /etc/apt/sources.list \
+# RUN sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list \
 #     && apt-get update --fix-missing \
 #     && apt-get -y upgrade
 
