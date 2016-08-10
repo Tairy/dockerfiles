@@ -12,6 +12,5 @@ ADD config/php_site /etc/nginx/php_site
 ADD config/default_site /etc/nginx/sites-enabled/default
 
 EXPOSE 80
-EXPOSE 8000
 
 CMD php5-fpm && nginx -g "daemon off;"
