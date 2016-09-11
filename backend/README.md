@@ -11,7 +11,7 @@ docker build -t backend ./
 
 ### Usage 
 
-** Should link a frontend container with alias static.**
+This container should link a frontend container with alias static.
 
 [Here](https://github.com/Tairy/dockerfiles/tree/master/api) is a php server do not need to link.
 
