@@ -1,6 +1,6 @@
 ## Webserver
 
-A nginx with php-fpm5 web server.
+A nginx web server.
 
 ### Build
 
@@ -13,5 +13,5 @@ docker build -t webserver ./
 
 ```
 cd /your/work/path/
-docker run -d --name web1 -v `pwd`:/var/www:rw -p 4567:80 -p 8000:8000 webserver
+docker run -d --name frontend1 -v `pwd`:/var/www:rw -p 4567:80 webserver
 ```
