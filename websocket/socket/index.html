@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>socketio</title>
+  <link rel="stylesheet" href="">
+  <script src="//cdn.bootcss.com/socket.io/1.4.8/socket.io.js" type="text/javascript" charset="utf-8"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+  <style>
+    #out p {
+      margin:0;
+    }
+  </style>
+</head>
+<body>
+  <div id="out"></div>
+  <script>
+    var socket = io();
+      msgArr = [];
+    socket.emit('outlog', 'outlog');
+
+    socket.on('out', function(msg){
+      if(msgArr.indexOf(msg) == -1){
+        $('#out').append($('<p>').text(msg));
+        msgArr.push(msg);
+      }
+    });
+  </script>
+</body>
+</html>
