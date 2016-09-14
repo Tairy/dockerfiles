@@ -1,0 +1,36 @@
+upstream static {
+    server static weight=1;
+}
+
+server {
+  listen 80 default_server;
+  server_name  sfdocker.com;
+
+  location ~ {
+      index index.html index.php;
+      root /working/portal;
+      if (!-e $request_filename) {
+        rewrite ^(.*)$ /index.php$1 last;
+      }
+
+     location ~ [^/]\.php(/|$) {
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass unix:/var/run/php/php7.0-fpm.sock;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+      }
+
+  }
+  location ^~ /build/ {
+      proxy_pass http://static;
+      proxy_read_timeout 300;
+      proxy_connect_timeout 300;
+      proxy_redirect     off;
+
+      proxy_set_header   X-Forwarded-Proto $scheme;
+      proxy_set_header   Host              $http_host;
+      proxy_set_header   X-Real-IP         $remote_addr;
+  }
+  sendfile off;
+}
