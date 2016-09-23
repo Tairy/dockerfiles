@@ -31,11 +31,10 @@ RUN rbenv install -v 2.3.1 \
     && rbenv global 2.3.1 \
     && echo "gem: --no-document" > /root/.gemrc \
     && gem sources --add https://ruby.taobao.org/ --remove https://rubygems.org/ \
-    && gem install bundler \
-    && gem install github-pages
+    && gem install bundler
 
 # ADD templates /working
 WORKDIR /working
 
 EXPOSE 4000
-CMD bundler install && jekyll serve -H 0.0.0.0 --watch
+CMD bundler install && bundle exec jekyll serve -H 0.0.0.0 --force_polling
