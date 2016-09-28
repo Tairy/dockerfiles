@@ -21,7 +21,7 @@
     socket.emit('outlog', 'outlog');
 
     socket.on('out', function(msg){
-      if(msgArr.indexOf(msg) == -1){
+      if(msgArr[msgArr.length - 1] != msg){
         $('#out').append($('<p>').text(msg));
         msgArr.push(msg);
       }
