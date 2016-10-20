@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM daocloud.io/ubuntu:14.04
 MAINTAINER Tairy <tairyguo@gmail.com>
 
 ADD scripts/install-base.sh /root/install-base.sh
