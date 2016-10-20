@@ -3,7 +3,7 @@ server {
   server_name  default;
 
   index index.html index.php;
-  root /working;
+  root /working/public;
   location / {
     try_files $uri $uri/ /index.php?$query_string;
   }

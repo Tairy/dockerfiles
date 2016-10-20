@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM daocloud.io/ubuntu:14.04
 MAINTAINER Tairy <tairyguo@gmail.com>
 
 # Install Base.

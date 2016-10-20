@@ -21,6 +21,10 @@ ADD scripts/install-laravel.sh /root/install-laravel.sh
 RUN chmod +x /root/install-laravel.sh
 RUN /bin/bash /root/install-laravel.sh
 
+ADD scripts/install-phpunit.sh /root/install-phpunit.sh
+RUN chmod +x /root/install-phpunit.sh
+RUN /bin/bash /root/install-phpunit.sh
+
 ENV PATH=$PATH:/root/.composer/vendor/bin
 RUN service php7.0-fpm start
 
