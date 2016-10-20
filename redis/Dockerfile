@@ -16,7 +16,7 @@ ADD ./redis-stable /tmp/redis-stable
 # Install Redis.
 RUN \
   cd /tmp/redis-stable && \
-  make MALLOC=libc && \
+  make && \
   make install && \
   cp -f src/redis-sentinel /usr/local/bin && \
   mkdir -p /etc/redis && \
